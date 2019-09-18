@@ -1,0 +1,62 @@
+{
+    "config": [
+        {
+            "GPUIndex": 0,
+            "GPUBusID": 9,
+            "GPUAddress": 112,
+            "GPUChannel": 1
+        },
+         {
+            "GPUIndex": 1,
+            "GPUBusID": 9,
+            "GPUAddress": 113,
+            "GPUChannel": 1
+        },
+        {
+            "GPUIndex": 2,
+            "GPUBusID": 9,
+            "GPUAddress": 112,
+            "GPUChannel": 2
+        },
+        {
+            "GPUIndex": 3,
+            "GPUBusID": 9,
+            "GPUAddress": 113,
+            "GPUChannel": 2
+        },
+        {
+            "GPUIndex": 4,
+            "GPUBusID": 10,
+            "GPUAddress": 112,
+            "GPUChannel": 1
+        },
+        {
+            "GPUIndex": 5,
+            "GPUBusID": 10,
+            "GPUAddress": 113,
+            "GPUChannel": 1
+        },
+        {
+            "GPUIndex": 6,
+            "GPUBusID": 10,
+            "GPUAddress": 112,
+            "GPUChannel": 2
+        },
+        {
+            "GPUIndex": 7,
+            "GPUBusID": 10,
+            "GPUAddress": 113,
+            "GPUChannel": 2
+        }
+    ],
+    "threshold":[
+        {
+            "criticalHigh":90,
+            "criticalLow":0,
+            "maxValue":80,
+            "minValue":0,
+            "warningHigh":85,
+            "warningLow":0
+        }
+    ]
+}
