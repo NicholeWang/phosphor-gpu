@@ -3,32 +3,32 @@
         {
             "GPUIndex": 0,
             "GPUBusID": 9,
-            "GPUAddress": 112,
+            "GPUAddress": 113,
             "GPUChannel": 1
         },
          {
             "GPUIndex": 1,
             "GPUBusID": 9,
             "GPUAddress": 113,
-            "GPUChannel": 1
+            "GPUChannel": 2
         },
         {
             "GPUIndex": 2,
             "GPUBusID": 9,
             "GPUAddress": 112,
-            "GPUChannel": 2
+            "GPUChannel": 1
         },
         {
             "GPUIndex": 3,
             "GPUBusID": 9,
-            "GPUAddress": 113,
+            "GPUAddress": 112,
             "GPUChannel": 2
         },
         {
             "GPUIndex": 4,
             "GPUBusID": 10,
-            "GPUAddress": 112,
-            "GPUChannel": 1
+            "GPUAddress": 113,
+            "GPUChannel": 2
         },
         {
             "GPUIndex": 5,
@@ -40,12 +40,12 @@
             "GPUIndex": 6,
             "GPUBusID": 10,
             "GPUAddress": 112,
-            "GPUChannel": 2
+            "GPUChannel": 1
         },
         {
             "GPUIndex": 7,
             "GPUBusID": 10,
-            "GPUAddress": 113,
+            "GPUAddress": 112,
             "GPUChannel": 2
         }
     ],
