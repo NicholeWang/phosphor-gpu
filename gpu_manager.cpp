@@ -1,7 +1,6 @@
 #include "gpu_manager.hpp"
 #include "gpu.hpp"
 #include "nlohmann/json.hpp"
-//#include "smbus.hpp"
 #include <experimental/filesystem>
 #include <fstream>
 #include <iostream>
@@ -72,7 +71,7 @@ std::vector<phosphor::gpu::Gpu::GPUConfig> getGpuConfig()
     uint64_t criticalLow = 0;
     uint64_t maxValue = 0;
     uint64_t minValue = 0;
-	uint64_t warningHigh = 0;
+    uint64_t warningHigh = 0;
     uint64_t warningLow = 0;
 
     try
@@ -145,12 +144,12 @@ void Gpu::read()
     for (int i = 0; i < configs.size(); i++)
     {
         GPUData gpuData;
-		int Value = 0;	
+        int Value = 0;	
         auto iter = gpus.find(std::to_string(configs[i].index));
         
         std::cerr << "GPU index = "<< i << std::endl;
 
-		// get GPU information through i2c by busID.
+        // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
 		gpuData.sensorValue = (u_int64_t)Value;
 					
@@ -178,12 +177,11 @@ void Gpu::read()
              iter->second->checkSensorThreshold();
          }
 
-		 if (0 == success)
-		 {
-		     gpus.erase(std::to_string(configs[i].index));
-			 continue;
-		 }
-			 
+	 if (0 == success)
+	 {
+	     gpus.erase(std::to_string(configs[i].index));
+	     continue;
+	 }			 
     }
 }
 } // namespace gpu

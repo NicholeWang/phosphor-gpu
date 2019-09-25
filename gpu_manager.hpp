@@ -12,7 +12,6 @@ namespace phosphor
 {
 namespace gpu
 {
-
 class Gpu
 {
   public:
@@ -30,13 +29,13 @@ class Gpu
     {
         uint8_t index;
         uint8_t busID;
-		uint8_t address;
+	uint8_t address;
         uint8_t channel;
         uint64_t criticalHigh;
         uint64_t criticalLow;
         uint64_t maxValue;
         uint64_t minValue;
-		uint64_t warningHigh;
+	uint64_t warningHigh;
         uint64_t warningLow;
     };
 

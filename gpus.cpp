@@ -18,7 +18,7 @@ void GpuTEMP::checkSensorThreshold()
     uint64_t value = ValueIface::value();
     uint64_t criticalHigh = CriticalInterface::criticalHigh();
     uint64_t criticalLow = CriticalInterface::criticalLow();
-	uint64_t warningHigh = WarningInterface::warningHigh();
+    uint64_t warningHigh = WarningInterface::warningHigh();
     uint64_t warningLow = WarningInterface::warningLow();
 
     if (value > warningHigh)
@@ -52,7 +52,7 @@ void GpuTEMP::setSensorThreshold(uint64_t criticalHigh, uint64_t criticalLow,
     ValueIface::maxValue(maxValue);
     ValueIface::minValue(minValue);
     WarningInterface::warningHigh(warningHigh);
-	WarningInterface::warningLow(warningLow);
+    WarningInterface::warningLow(warningLow);
 }
 
 void GpuTEMP::setSensorValueToDbus(const u_int64_t value)
