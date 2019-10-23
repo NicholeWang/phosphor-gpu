@@ -147,7 +147,7 @@ void Gpu::read()
         int Value = 0;	
         auto iter = gpus.find(std::to_string(configs[i].index));
         
-        std::cerr << "GPU index = "<< i << std::endl;
+        //std::cerr << "GPU index = "<< i << std::endl;
 
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 

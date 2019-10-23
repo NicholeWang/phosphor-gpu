@@ -306,7 +306,7 @@ int phosphor::smbus::Smbus::GetSmbusCmdByte(int smbus_num, int8_t device_addr, i
 
     res = i2c_smbus_read_byte_data(fd[smbus_num], smbuscmd);
     if (res < 0) {
-        fprintf(stderr, "Error: Read failed\n");
+        //fprintf(stderr, "Error: Read failed\n");
         gMutex.unlock();
 
         return -1;
@@ -335,7 +335,7 @@ int phosphor::smbus::Smbus::SetSmbusCmdByte(int smbus_num, int8_t device_addr, i
 
     res = i2c_smbus_write_byte_data(fd[smbus_num], smbuscmd, data);
     if (res < 0) {
-        fprintf(stderr, "Error: Read failed\n");
+        //fprintf(stderr, "Error: Read failed\n");
         gMutex.unlock();
 
         return -1;
