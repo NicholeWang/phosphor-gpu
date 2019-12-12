@@ -152,7 +152,7 @@ void Gpu::read()
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
 		gpuData.sensorValue = (u_int64_t)Value;
-					
+
         // can not find. create dbus
         if (iter == gpus.end())
         {
@@ -163,7 +163,14 @@ void Gpu::read()
                  bus, objPath.c_str());
              gpus.emplace(std::to_string(configs[i].index), gpuTEMP);
 
-             gpuTEMP->setSensorValueToDbus(gpuData.sensorValue);
+             if (gpuData.sensorValue == 255 || gpuData.sensorValue == -1)
+             {
+                 gpuTEMP->setSensorValueToDbus(0);
+             }
+             else
+			 {
+			     gpuTEMP->setSensorValueToDbus(gpuData.sensorValue);
+			 }
              gpuTEMP->setSensorThreshold(
                  configs[i].criticalHigh, configs[i].criticalLow,
                  configs[i].maxValue, configs[i].minValue,
@@ -173,7 +180,14 @@ void Gpu::read()
          }
          else
          {
-             iter->second->setSensorValueToDbus(gpuData.sensorValue);
+             if(gpuData.sensorValue == 255 || gpuData.sensorValue == -1)
+             {
+                 iter->second->setSensorValueToDbus(0);
+             }
+             else
+			 {
+			     iter->second->setSensorValueToDbus(gpuData.sensorValue);
+			 }
              iter->second->checkSensorThreshold();
          }
 
