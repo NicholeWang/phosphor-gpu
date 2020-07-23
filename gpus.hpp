@@ -27,6 +27,11 @@ using WarningInterface =
 using GpuIfaces =
     sdbusplus::server::object::object<ValueIface, CriticalInterface, WarningInterface>;
 
+using ItemIface = sdbusplus::xyz::openbmc_project::Inventory::server::Item;
+
+using GpuStatusIfaces =
+    sdbusplus::server::object::object<ItemIface>;
+
 class GpuTEMP : public GpuIfaces
 {
   public:
@@ -47,6 +52,27 @@ class GpuTEMP : public GpuIfaces
     void setSensorThreshold(uint64_t criticalHigh, uint64_t criticalLow,
                             uint64_t maxValue, uint64_t minValue,
                             uint64_t warningHigh, uint64_t warningLow);
+
+  private:
+    sdbusplus::bus::bus &bus;
+};
+
+class GpuSTATUS : public GpuStatusIfaces
+{
+  public:
+    GpuSTATUS() = delete;
+    GpuSTATUS(const GpuSTATUS &) = delete;
+    GpuSTATUS &operator=(const GpuSTATUS &) = delete;
+    GpuSTATUS(GpuSTATUS &&) = delete;
+    GpuSTATUS &operator=(GpuSTATUS &&) = delete;
+    virtual ~GpuSTATUS() = default;
+
+    GpuSTATUS(sdbusplus::bus::bus &bus, const char *objPath) :
+        GpuStatusIfaces(bus, objPath), bus(bus)
+    {
+    }
+
+    void setGpuStatusToDbus(const bool value);
 
   private:
     sdbusplus::bus::bus &bus;

@@ -37,6 +37,16 @@ AC_ARG_VAR(GPU_OBJ_PATH, [The gpu object path])
 AS_IF([test "x$GPU_OBJ_PATH" == "x"], [GPU_OBJ_PATH="/xyz/openbmc_project/sensors/temperature/gpu"])
 AC_DEFINE_UNQUOTED([GPU_OBJ_PATH], ["$GPU_OBJ_PATH"], [The gpu Dbus root])
 
+# GPU service dbus root
+AC_ARG_VAR(GPU_OBJ_PATH_SERVICE_ROOT, [The gpu object path])
+AS_IF([test "x$GPU_OBJ_PATH_SERVICE_ROOT" == "x"], [GPU_OBJ_PATH_SERVICE_ROOT="/xyz/openbmc_project/gpuservice"])
+AC_DEFINE_UNQUOTED([GPU_OBJ_PATH_SERVICE_ROOT], ["$GPU_OBJ_PATH_SERVICE_ROOT"], [The gpu Dbus root])
+
+# GPU service dbus objpath
+AC_ARG_VAR(GPU_OBJ_PATH_SERVICE, [The gpu object path])
+AS_IF([test "x$GPU_OBJ_PATH_SERVICE" == "x"], [GPU_OBJ_PATH_SERVICE="/xyz/openbmc_project/gpuservice/status"])
+AC_DEFINE_UNQUOTED([GPU_OBJ_PATH_SERVICE], ["$GPU_OBJ_PATH_SERVICE"], [The gpu Dbus root])
+
 # Service dbus interface
 AC_ARG_VAR(DBUS_PROPERTY_IFACE, [The properies interface])
 AS_IF([test "x$DBUS_PROPERTY_IFACE" == "x"], [DBUS_PROPERTY_IFACE="org.freedesktop.DBus.Properties"])

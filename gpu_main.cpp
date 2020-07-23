@@ -29,6 +29,10 @@ int main(void)
 
     phosphor::gpu::Gpu objMgr(bus, GPU_OBJ_PATH_ROOT);
 
+    sdbusplus::server::manager::manager service_objManager(bus, GPU_OBJ_PATH_SERVICE_ROOT);
+
+    phosphor::gpu::Gpu service_objMgr(bus, GPU_OBJ_PATH_SERVICE_ROOT);
+
     bus.request_name(GPU_REQUEST_NAME);
 
     objMgr.run();

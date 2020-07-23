@@ -40,7 +40,7 @@ void GpuTEMP::checkSensorThreshold()
         CriticalInterface::criticalAlarmLow(true);
     else
         CriticalInterface::criticalAlarmLow(false);
-}	
+}
 
 void GpuTEMP::setSensorThreshold(uint64_t criticalHigh, uint64_t criticalLow,
                                  uint64_t maxValue, uint64_t minValue,
@@ -58,6 +58,10 @@ void GpuTEMP::setSensorThreshold(uint64_t criticalHigh, uint64_t criticalLow,
 void GpuTEMP::setSensorValueToDbus(const u_int64_t value)
 {
     ValueIface::value(value);
+}
+void GpuSTATUS::setGpuStatusToDbus(const bool value)
+{
+    ItemIface::present(value);
 }
 
 } // namespace gpu

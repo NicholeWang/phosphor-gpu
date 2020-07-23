@@ -88,7 +88,7 @@ std::vector<phosphor::gpu::Gpu::GPUConfig> getGpuConfig()
                 criticalLow = instance.value("criticalLow", 0);
                 maxValue = instance.value("maxValue", 0);
                 minValue = instance.value("minValue", 0);
-				warningHigh = instance.value("warningHigh", 0);
+                warningHigh = instance.value("warningHigh", 0);
                 warningLow = instance.value("warningLow", 0);
             }
         }
@@ -109,12 +109,12 @@ std::vector<phosphor::gpu::Gpu::GPUConfig> getGpuConfig()
                 gpuConfig.index = index;   
                 gpuConfig.busID = busID;
                 gpuConfig.address = address;
-				gpuConfig.channel = channel;
+                gpuConfig.channel = channel;
                 gpuConfig.criticalHigh = criticalHigh;
                 gpuConfig.criticalLow = criticalLow;
                 gpuConfig.maxValue = maxValue;
                 gpuConfig.minValue = minValue;
-				gpuConfig.warningHigh = warningHigh;
+                gpuConfig.warningHigh = warningHigh;
                 gpuConfig.warningLow = warningLow;
                 gpuConfigs.push_back(gpuConfig);
             }
@@ -140,18 +140,32 @@ void Gpu::init()
 
 void Gpu::read()
 {
-	
+    int s = 0;
+
     for (int i = 0; i < configs.size(); i++)
     {
         GPUData gpuData;
-        int Value = 0;	
+        int Value = 0;
         auto iter = gpus.find(std::to_string(configs[i].index));
+        auto service_iter = gpustatus.find(std::to_string(s));
         
         //std::cerr << "GPU index = "<< i << std::endl;
+        if(service_iter == gpustatus.end())
+        {
+             std::string objPaths = GPU_OBJ_PATH_SERVICE;
 
+             auto gpuSTATUS = std::make_shared<phosphor::gpu::GpuSTATUS>(
+                 bus, objPaths.c_str());
+             gpustatus.emplace(std::to_string(s), gpuSTATUS);
+             gpuSTATUS->setGpuStatusToDbus(true);
+        }
+        else
+        {
+            service_iter->second->setGpuStatusToDbus(true);
+        }
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
-		gpuData.sensorValue = (u_int64_t)Value;
+        gpuData.sensorValue = (u_int64_t)Value;
 
         // can not find. create dbus
         if (iter == gpus.end())
@@ -168,9 +182,9 @@ void Gpu::read()
                  gpuTEMP->setSensorValueToDbus(0);
              }
              else
-			 {
-			     gpuTEMP->setSensorValueToDbus(gpuData.sensorValue);
-			 }
+             {
+                 gpuTEMP->setSensorValueToDbus(gpuData.sensorValue);
+             }
              gpuTEMP->setSensorThreshold(
                  configs[i].criticalHigh, configs[i].criticalLow,
                  configs[i].maxValue, configs[i].minValue,
@@ -185,17 +199,17 @@ void Gpu::read()
                  iter->second->setSensorValueToDbus(0);
              }
              else
-			 {
-			     iter->second->setSensorValueToDbus(gpuData.sensorValue);
-			 }
+             {
+                 iter->second->setSensorValueToDbus(gpuData.sensorValue);
+             }
              iter->second->checkSensorThreshold();
          }
 
-	 if (0 == success)
-	 {
-	     gpus.erase(std::to_string(configs[i].index));
-	     continue;
-	 }			 
+     if (0 == success)
+     {
+         gpus.erase(std::to_string(configs[i].index));
+         continue;
+     }
     }
 }
 } // namespace gpu
