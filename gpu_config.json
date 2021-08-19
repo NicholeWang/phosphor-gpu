@@ -1,52 +1,28 @@
 {
     "config": [
         {
-            "GPUIndex": 0,
-            "GPUBusID": 9,
-            "GPUAddress": 113,
-            "GPUChannel": 1
-        },
-         {
-            "GPUIndex": 1,
-            "GPUBusID": 9,
-            "GPUAddress": 113,
-            "GPUChannel": 2
+            "DIMMIndex": 0,
+            "DIMMBusID": 6,
+            "DIMMAddress": 115,
+            "DIMMChannel": 1
         },
         {
-            "GPUIndex": 2,
-            "GPUBusID": 9,
-            "GPUAddress": 112,
-            "GPUChannel": 1
+            "DIMMIndex": 1,
+            "DIMMBusID": 6,
+            "DIMMAddress": 115,
+            "DIMMChannel": 2
         },
         {
-            "GPUIndex": 3,
-            "GPUBusID": 9,
-            "GPUAddress": 112,
-            "GPUChannel": 2
+            "DIMMIndex": 2,
+            "DIMMBusID": 6,
+            "DIMMAddress": 115,
+            "DIMMChannel": 4
         },
         {
-            "GPUIndex": 4,
-            "GPUBusID": 10,
-            "GPUAddress": 113,
-            "GPUChannel": 2
-        },
-        {
-            "GPUIndex": 5,
-            "GPUBusID": 10,
-            "GPUAddress": 113,
-            "GPUChannel": 1
-        },
-        {
-            "GPUIndex": 6,
-            "GPUBusID": 10,
-            "GPUAddress": 112,
-            "GPUChannel": 1
-        },
-        {
-            "GPUIndex": 7,
-            "GPUBusID": 10,
-            "GPUAddress": 112,
-            "GPUChannel": 2
+            "DIMMIndex": 3,
+            "DIMMBusID": 6,
+            "DIMMAddress": 115,
+            "DIMMChannel": 8
         }
     ],
     "threshold":[

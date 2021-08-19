@@ -1,0 +1,2 @@
+1. Copy libgpu.a here from gen-libgpu-a folder.
+2. Do not commit gen-libgpu-a folder to Github.

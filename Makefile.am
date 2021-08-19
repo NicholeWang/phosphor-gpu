@@ -6,10 +6,10 @@ gpu_main_SOURCES = \
                 gpu_main.cpp  \
                 gpu_manager.cpp \
                 smbus.cpp \
+                gpu.cpp \
                 gpus.cpp 
 
-gpu_main_LDFLAGS =  -L../git/ \
-                    -lgpu \
+gpu_main_LDFLAGS = \
                     -lstdc++fs \
                     $(SDBUSPLUS_LIBS) \
                     $(PHOSPHOR_DBUS_INTERFACES_LIBS) \
