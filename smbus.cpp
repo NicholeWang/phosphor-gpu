@@ -45,7 +45,7 @@
 #define MAX_I2C_BUS             30
 
 
-
+using namespace std;
 static int fd[MAX_I2C_BUS] = {0};
 
 // #define printf(format, args...)  {}
@@ -235,26 +235,26 @@ int phosphor::smbus::Smbus::SendSmbusCmd(int smbus_num, int8_t device_addr, uint
 int phosphor::smbus::Smbus::GetSmbusCmdWord(int smbus_num, int8_t device_addr, int8_t smbuscmd )
 {
     int res;
-
+	cout << "10 Test: " <<endl;
     gMutex.lock();
     if(fd[smbus_num] > 0) {
         res = set_slave_addr(fd[smbus_num], device_addr, I2C_SLAVE);
         if(res < 0) {
-            fprintf(stderr, "set PMBUS BUS%d to slave address 0x%02X failed (%s)\n", smbus_num, device_addr,strerror(errno));
+           // fprintf(stderr, "set PMBUS BUS%d to slave address 0x%02X failed (%s)\n", smbus_num, device_addr,strerror(errno));
                 close(fd[smbus_num]);
                 //(smbus_num);
             return -1;
         }
     }
-
+    cout << "20 Test: " <<endl;
     res = i2c_smbus_read_word_data(fd[smbus_num], smbuscmd);
     if (res < 0) {
-        fprintf(stderr, "Error: Read failed\n");
+      // fprintf(stderr, "Error: Read failed\n");
         gMutex.unlock();
         return -1;
     }
-
-    printf("\r[GetSmbusCmdWord] 0x%0*x",2, res);
+	cout << "30 Test: " <<endl;
+  //  printf("\r[GetSmbusCmdWord] 0x%0*x",2, res);
     //(smbus_num);
     return res;
 }
