@@ -34,7 +34,7 @@ AC_DEFINE_UNQUOTED([GPU_OBJ_PATH_ROOT], ["$GPU_OBJ_PATH_ROOT"], [The gpu Dbus ro
 
 # Service dbus objpath
 AC_ARG_VAR(GPU_OBJ_PATH, [The gpu object path])
-AS_IF([test "x$GPU_OBJ_PATH" == "x"], [GPU_OBJ_PATH="/xyz/openbmc_project/sensors/temperature/gpu"])
+AS_IF([test "x$GPU_OBJ_PATH" == "x"], [GPU_OBJ_PATH="/xyz/openbmc_project/sensors/temperature/TEMP_CPU"])
 AC_DEFINE_UNQUOTED([GPU_OBJ_PATH], ["$GPU_OBJ_PATH"], [The gpu Dbus root])
 
 # GPU service dbus root

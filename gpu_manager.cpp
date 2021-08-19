@@ -18,6 +18,7 @@ static constexpr auto configFile = "/etc/gpu/gpu_config.json";
 auto retries = 3;
 static constexpr auto delay = std::chrono::milliseconds{100};
 using Json = nlohmann::json;
+using std::vector;
 std::vector<phosphor::gpu::Gpu::GPUConfig> configs;
 namespace fs = std::experimental::filesystem;
 
@@ -141,7 +142,7 @@ void Gpu::init()
 void Gpu::read()
 {
     int s = 0;
-
+    vector<string> str_arr1 = { "0_ABCD", "0_EFGH", "1_IJKL", "1_MNOP"};
     for (int i = 0; i < configs.size(); i++)
     {
         GPUData gpuData;
@@ -166,12 +167,12 @@ void Gpu::read()
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
         gpuData.sensorValue = (u_int64_t)Value;
-
+        cout << "5 Test: " <<endl;
         // can not find. create dbus
         if (iter == gpus.end())
         {
              std::string objPath = 
-                 GPU_OBJ_PATH + std::to_string(configs[i].index);
+                 GPU_OBJ_PATH + str_arr1[i];
 
              auto gpuTEMP = std::make_shared<phosphor::gpu::GpuTEMP>(
                  bus, objPath.c_str());
